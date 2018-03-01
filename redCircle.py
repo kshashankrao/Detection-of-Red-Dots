@@ -4,20 +4,18 @@ import numpy as np
 img = cv2.imread("DDD.JPG")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-# lower mask (0-10)
 lower_red = np.array([0,50,50])
 upper_red = np.array([10,255,255])
 mask0 = cv2.inRange(img, lower_red, upper_red)
 #cv2.imshow("Mask0",mask0)
 
-# upper mask (170-180)
 lower_red = np.array([170,50,50])
 upper_red = np.array([180,255,255])
 mask1 = cv2.inRange(img, lower_red, upper_red)
 #cv2.imshow("Mask1",mask1)
 
 mask = mask0+mask1
-cv2.imshow("Mask1",mask)
+#cv2.imshow("Mask1",mask)
 
 _,cnts,_ = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 #print(cnts)
